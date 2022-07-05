@@ -7,7 +7,7 @@ def get_cities() -> list:
     soup = BS(page.text, 'lxml')
 
     list_city = []
-   for city in soup.find_all('tr')[1:75]:
+    for city in soup.find_all('tr')[1:75]:
         row_data = city.find_all('td')[1]
         row = [i.text for i in row_data]
         list_city.append(row[0])
