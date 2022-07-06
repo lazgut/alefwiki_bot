@@ -23,11 +23,17 @@ def list_city(message):
 @bot.message_handler(func=lambda m: True)
 def reply(message):
     answer = ''
-    for city in get_cities():
+    count = 0
+    dict_city = get_cities()
+    for city in dict_city.keys():
         if city.startswith(message.text):
             answer += city + '\n'
-    if answer:
-        bot.send_message(message.chat.id, answer)
+            count += 1
+    if count > 1:
+        bot.send_message(message.chat.id, f'Назовите город более точно, вот ваши варианты:\n{answer}')
+    elif count == 1:
+        bot.send_message(message.chat.id, f'Город который вы ищите - {answer}\n'
+                                          f'Ссылка на город - https://ru.wikipedia.org{dict_city[answer[:-1]]}')
     else:
         bot.send_message(message.chat.id, 'Городов с таким названием нет в базе, попробуйте ещё раз! :(')
 
