@@ -8,6 +8,6 @@ RUN python -m venv venv
 
 RUN . ./venv/bin/activate
 
-RUN pip install --user pyTelegramBotAPI beautifulsoup4 requests lxml
+RUN pip install --user pyTelegramBotAPI beautifulsoup4 requests lxml pandas sqlalchemy psycopg2
 
 CMD ["python", "run.py"]
