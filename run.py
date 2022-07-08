@@ -33,7 +33,8 @@ def reply(message):
         bot.send_message(message.chat.id, f'Назовите город более точно, вот ваши варианты:\n{answer}')
     elif count == 1:
         bot.send_message(message.chat.id, f'Город который вы ищите - {answer}\n'
-                                          f'Ссылка на город - https://ru.wikipedia.org{dict_city[answer[:-1]]}')
+                                          f'Численность города - {dict_city[answer[:-1]][0]}\n'
+                                          f'Ссылка на город - https://ru.wikipedia.org{dict_city[answer[:-1]][1]}')
     else:
         bot.send_message(message.chat.id, 'Городов с таким названием нет в базе, попробуйте ещё раз! :(')
 

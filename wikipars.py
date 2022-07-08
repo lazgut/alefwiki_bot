@@ -8,11 +8,8 @@ def get_cities() -> dict:
 
     list_city = {}
     for city in soup.find_all('tr')[1:75]:
+        city_count = city.find_all('td')[4].get('data-sort-value')
         row_data = city.find_all('td')[1]
-        row = {i.get('title'): i.get('href') for i in row_data}
+        row = {i.get('title'): [city_count, i.get('href')] for i in row_data}
         list_city.update(row)
     return list_city
-
-
-if __name__ == "__main__":
-    print(get_cities())
