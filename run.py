@@ -31,7 +31,7 @@ def update_db(message):
     dataframe_to_postgresql(df_values)
 
 
-@bot.message_handler(func=lambda m: True)
+@bot.message_handler(func=lambda m: True)  # Обрабатывает сообщения с частичным/полным названием города
 def reply(message):
     answer = ''
     count = 0
@@ -50,7 +50,7 @@ def reply(message):
         bot.send_message(message.chat.id, 'Городов с таким названием нет в базе, попробуйте ещё раз! :(')
 
 
-def dataframe_to_postgresql(df_values):  # Записываем DataFrame в таблицу postgresql
+def dataframe_to_postgresql(df_values):  # Записываем DataFrame в таблицу postgresql с обратной связью по postgresql
     try:
         connection = psycopg2.connect(
             host=host,
